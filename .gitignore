@@ -1,0 +1,17 @@
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media
+
+config.py
+migrations
+bookings.csv
+.vscode
+
+### Celery ###
+celerybeat-schedule.db
+dump.rdb
