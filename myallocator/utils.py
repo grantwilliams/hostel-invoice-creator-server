@@ -27,7 +27,7 @@ def download_bookings():
 
     csv_data = {
         'criteria': 'start_days',
-        'timespan': '',
+        'timespan': '900',
         'filter': ''
     }
 
@@ -54,6 +54,7 @@ def add_to_database():
                     booking_id=row[0].strip(),
                     channel=row[1].strip(),
                     booking_date=datetime.strptime(row[2], '%Y-%m-%d'),
+                    booking_time=datetime.strptime(row[5], '%H:%M:%S'),
                     arrival_date=datetime.strptime(row[6], '%Y-%m-%d'),
                     departure_date=datetime.strptime(row[7], '%Y-%m-%d'),
                     nights=int(row[8]),

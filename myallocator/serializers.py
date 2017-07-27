@@ -5,6 +5,7 @@ class BookingSerializer(serializers.Serializer):
     booking_id = serializers.CharField(max_length=30, read_only=True)
     channel = serializers.CharField(max_length=5)
     booking_date = serializers.DateField()
+    booking_time = serializers.TimeField()
     arrival_date = serializers.DateField()
     departure_date = serializers.DateField()
     nights = serializers.IntegerField()

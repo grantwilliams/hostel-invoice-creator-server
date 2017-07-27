@@ -19,7 +19,7 @@ def search(request):
         Q(last_name__istartswith=query) |
         Q(email__istartswith=query) |
         Q(booking_id__istartswith=query)
-    ).order_by('-arrival_date')
+    ).order_by('-arrival_date', 'last_name')
 
     serializer = BookingSerializer(bookings, many=True)
     return JsonResponse(serializer.data, safe=False)
@@ -27,7 +27,7 @@ def search(request):
 @api_view(['GET'])
 @csrf_exempt
 def fetch_all(request):
-    bookings = Booking.objects.all().order_by('-booking_date')
+    bookings = Booking.objects.all().order_by('-booking_date', '-booking_time')
     serializer = BookingSerializer(bookings, many=True)
     return JsonResponse(serializer.data, safe=False)
 
