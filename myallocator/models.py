@@ -1,11 +1,10 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
 import datetime
 
 # Create your models here.
 class Booking(models.Model):
     booking_id = models.CharField(primary_key=True, max_length=30)
-    channel = models.CharField(max_length=5)
+    channel = models.CharField(max_length=10)
     booking_date = models.DateField()
     booking_time = models.TimeField()
     arrival_date = models.DateField()
@@ -15,7 +14,7 @@ class Booking(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
     pax = models.IntegerField()
-    room_names = ArrayField(models.CharField(max_length=50))
+    room_names = models.CharField(max_length=50)
     total_price = models.FloatField()
     deposit = models.FloatField()
 

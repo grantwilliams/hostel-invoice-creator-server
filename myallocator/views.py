@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from rest_framework import status
+from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from myallocator.models import Booking
 from myallocator.serializers import BookingSerializer
@@ -48,3 +49,13 @@ def fetch_todays_arrivals(request):
 
     serializer = BookingSerializer(bookings, many=True)
     return JsonResponse(serializer.data, safe=False)
+
+@api_view(['POST'])
+@csrf_exempt
+def add_booking(request):
+    serializer = BookingSerializer(data=request.data)
+    if serializer.is_valid():
+        print(request.data)
+        return Response(request.data, status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)

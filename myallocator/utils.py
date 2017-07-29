@@ -62,7 +62,7 @@ def add_to_database():
                     last_name=row[10].strip(),
                     email=row[12].strip(),
                     pax=int(row[16]),
-                    room_names=row[18].split(', '),
+                    room_names=row[18].split(', ')[0],
                     total_price=float(row[19]),
                     deposit=float(row[21])
                 )
