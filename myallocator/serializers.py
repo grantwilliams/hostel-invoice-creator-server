@@ -2,7 +2,7 @@ from rest_framework import serializers
 from myallocator.models import Booking
 
 class BookingSerializer(serializers.Serializer):
-    booking_id = serializers.CharField(max_length=30, read_only=True)
+    booking_id = serializers.CharField(max_length=30)
     channel = serializers.CharField(max_length=10)
     booking_date = serializers.DateField()
     booking_time = serializers.TimeField()
@@ -16,7 +16,6 @@ class BookingSerializer(serializers.Serializer):
     room_names = serializers.CharField(max_length=50)
     total_price = serializers.FloatField()
     deposit = serializers.FloatField()
-    dates = serializers.ListField(source='dates_list')
 
     def create(self, validated_data):
         return Booking.objects.create(**validated_data)

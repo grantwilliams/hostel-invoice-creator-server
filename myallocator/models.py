@@ -1,5 +1,4 @@
 from django.db import models
-import datetime
 
 # Create your models here.
 class Booking(models.Model):
@@ -19,6 +18,3 @@ class Booking(models.Model):
     deposit = models.FloatField()
 
     objects = models.Manager()
-
-    def dates_list(self):
-        return [(self.arrival_date + datetime.timedelta(days=i)).strftime("%Y-%m-%d") for i in range(self.nights)]

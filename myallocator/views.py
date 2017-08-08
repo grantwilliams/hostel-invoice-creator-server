@@ -56,6 +56,7 @@ def add_booking(request):
     serializer = BookingSerializer(data=request.data)
     if serializer.is_valid():
         print(request.data)
+        serializer.save()
         return Response(request.data, status.HTTP_201_CREATED)
     else:
         return Response(serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
