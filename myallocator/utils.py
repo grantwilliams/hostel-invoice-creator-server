@@ -1,10 +1,10 @@
+import os
 import csv
 from datetime import datetime
 import mechanicalsoup
 import requests.exceptions
 from celery.utils.log import get_task_logger
 from myallocator.models import Booking
-from hostel_invoice.config import MYALLOCATOR_USERNAME, MYALLOCATOR_PASSWORD
 
 def download_bookings():
     browser = mechanicalsoup.Browser(soup_config={"features": "html.parser"})
@@ -20,8 +20,8 @@ def download_bookings():
 
     login_form = login_page.soup.select('.login_box')[0].select('form')[0]
 
-    login_form.select('#Username')[0]['value'] = MYALLOCATOR_USERNAME
-    login_form.select('#Password')[0]['value'] = MYALLOCATOR_PASSWORD
+    login_form.select('#Username')[0]['value'] = os.environ['MYALLOCATOR_USERNAME']
+    login_form.select('#Password')[0]['value'] = os.environ['MYALLOCATOR_PASSWORD']
 
     browser.submit(login_form, login_page.url)
 
