@@ -15,5 +15,5 @@ pytz==2017.2
 redis==2.10.5
 requests==2.18.1
 six==1.10.0
-urllib3==1.21.1
+urllib3==1.26.5
 vine==1.1.4
